@@ -31,8 +31,7 @@ static std::vector<std::pair<std::string, Device::BuiltinAction>> g_menu_actions
   { "Reboot to bootloader", Device::REBOOT_BOOTLOADER },
   { "Reboot to recovery", Device::REBOOT_RECOVERY },
   { "Enter fastboot", Device::ENTER_FASTBOOT },
-  { "Apply update from ADB", Device::APPLY_ADB_SIDELOAD },
-  { "Apply update from SD card", Device::APPLY_SDCARD },
+  { "Apply update", Device::APPLY_UPDATE },
   { "Wipe data/factory reset", Device::WIPE_DATA },
   { "Wipe cache partition", Device::WIPE_CACHE },
   { "Mount /system", Device::MOUNT_SYSTEM },
@@ -91,6 +90,9 @@ int Device::HandleMenuKey(int key, bool visible) {
     case KEY_ENTER:
     case KEY_POWER:
       return kInvokeItem;
+
+    case KEY_REFRESH:
+      return kRefresh;
 
     default:
       // If you have all of the above buttons, any other buttons
