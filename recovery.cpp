@@ -257,6 +257,7 @@ static InstallResult apply_update_menu(Device* device, Device::BuiltinAction* re
     } else if (chosen > 0 && chosen - 1 < volumes.size()) {
       status = ApplyFromStorage(device, volumes[chosen - 1]);
     }
+    break;
   }
   return status;
 }
