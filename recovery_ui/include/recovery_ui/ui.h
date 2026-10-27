@@ -172,8 +172,7 @@ class RecoveryUI {
   // static_cast<size_t>(ERR_KEY_INTERTUPT) if interrupted, such as by InterruptKey().
   virtual size_t ShowMenu(const std::vector<std::string>& headers,
                           const std::vector<std::string>& items, size_t initial_selection,
-                          bool menu_only, const std::function<int(int, bool)>& key_handler,
-                          bool refreshable = false) = 0;
+                          bool menu_only, const std::function<int(int, bool)>& key_handler) = 0;
 
   // Displays the localized wipe data menu with pre-generated graphs. If there's an issue
   // with the graphs, falls back to use the backup string headers and items instead. The initial
@@ -209,11 +208,6 @@ class RecoveryUI {
 
   virtual bool IsUsbConnected();
 
-  // Notify of volume state change
-  void onVolumeChanged() {
-    EnqueueKey(KEY_REFRESH);
-  }
-
   bool IsSideloadAutoReboot() const {
     return sideload_auto_reboot_;
   }
@@ -221,7 +215,6 @@ class RecoveryUI {
   void SetSideloadAutoReboot(bool sar) {
     sideload_auto_reboot_ = sar;
   }
-
  protected:
   void EnqueueKey(int key_code);
 

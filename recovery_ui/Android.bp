@@ -51,7 +51,6 @@ cc_library {
         "libbase",
         "libpng",
         "libz",
-        "libvolume_manager",
     ],
 }
 

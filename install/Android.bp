@@ -120,7 +120,6 @@ cc_library_static {
 
     shared_libs: [
         "librecovery_ui",
-        "libvolume_manager",
     ],
 
     export_include_dirs: [
